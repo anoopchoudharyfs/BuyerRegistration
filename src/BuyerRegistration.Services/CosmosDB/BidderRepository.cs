@@ -10,7 +10,7 @@ namespace BuyerRegistration.Domain
 {
     public interface IBidderRepository
     {
-        Task Persist(BidderData bidder);
+        Task Persist(BidderData buyer);
     }
 
     public class BidderRepository : IBidderRepository
@@ -37,14 +37,14 @@ namespace BuyerRegistration.Domain
             SerializerOptions = new CosmosSerializationOptions() { PropertyNamingPolicy = CosmosPropertyNamingPolicy.CamelCase }
         };
 
-        public async Task Persist(BidderData bidder)
+        public async Task Persist(BidderData buyer)
         {
             var startTime = DateTime.UtcNow;
             var timer = System.Diagnostics.Stopwatch.StartNew();
             Exception exception = null;
             try
             {
-                await GetContainer().UpsertItemAsync(bidder);
+                await GetContainer().UpsertItemAsync(buyer);
             }
             catch(Exception ex)
             {
@@ -54,7 +54,7 @@ namespace BuyerRegistration.Domain
             finally
             {
                 timer.Stop();
-                _telemetryClient.TrackDependency(new DependencyTelemetry("Azure DocumentDB", null, "BuyerRegistrationUpsert", bidder.Id.ToString(), startTime, timer.Elapsed, "", exception == null));
+                _telemetryClient.TrackDependency(new DependencyTelemetry("Azure DocumentDB", null, "BuyerRegistrationUpsert", buyer.Id.ToString(), startTime, timer.Elapsed, "", exception == null));
             }
         }
 

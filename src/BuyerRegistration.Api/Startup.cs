@@ -55,7 +55,7 @@ namespace BuyerRegistration.Api
             {
 
                 swaggerOptions.CustomSchemaIds(x => x.FullName);
-                swaggerOptions.SwaggerDoc("v1", new OpenApiInfo { Title = "Bidder Registration", Version = "v1" });
+                swaggerOptions.SwaggerDoc("v1", new OpenApiInfo { Title = "Buyer Registration", Version = "v1" });
                 swaggerOptions.OperationFilter<AddRequiredHeaderParameter>();
             });
 
@@ -117,8 +117,8 @@ namespace BuyerRegistration.Api
             app.UseRouting();
             app.RegisterSwagger();
             app.RegisterMiddleware();
-            if (UseAppConfiguration)
-                app.UseAzureAppConfiguration();
+            //if (UseAppConfiguration)
+            //    app.UseAzureAppConfiguration();
 
             app.UseHttpsRedirection();
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });

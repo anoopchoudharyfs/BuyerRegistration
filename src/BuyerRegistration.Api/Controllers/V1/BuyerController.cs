@@ -11,21 +11,21 @@ namespace BuyerRegistration.Api.Controllers.V1
     [ApiController]
     [ApiVersion("1")]
     [Route("v1")]
-    public partial class BidderController : ControllerBase
+    public partial class BuyerController : ControllerBase
     {
         private readonly IBidderRepository _bidderRepository;
         private readonly IValidator<BidderRequest> _upsertBidderValidator;
 
-        public BidderController(IBidderRepository bidderRepository, IValidator<BidderRequest> upsertBidderValidator)
+        public BuyerController(IBidderRepository bidderRepository, IValidator<BidderRequest> upsertBidderValidator)
         {
             _upsertBidderValidator = upsertBidderValidator;
             _bidderRepository = bidderRepository;
         }
 
-        /// <summary> Put bidder</summary>
-        /// <param name="bidderRequest">The bidder request details</param>
+        /// <summary> Put buyer</summary>
+        /// <param name="bidderRequest">The buyer request details</param>
         [HttpPut]
-        [Route("bidder")]
+        [Route("buyer")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ValidationFailedResponse), StatusCodes.Status400BadRequest)]
         public async Task<ActionResult> PutBidder([FromBody] BidderRequest bidderRequest)

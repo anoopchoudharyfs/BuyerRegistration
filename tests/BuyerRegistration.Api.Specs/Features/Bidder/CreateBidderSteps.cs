@@ -34,14 +34,14 @@ namespace BuyerRegistration.Api.Specs.Features.Bidder
             _bidderRepository.Setup(x => x.Persist(It.IsAny<BidderData>()));            
         }
 
-        [When(@"you send a put bidder request to (.*)")] 
+        [When(@"you send a put buyer request to (.*)")] 
         public async Task WhenYouSendACreateBidderRequestT(string url)
         {
             var httpClient = GetClient(_factory);
             _scenarioContext["Response"] = await httpClient.PutAsync(url, new StringContent(RequestBody, System.Text.Encoding.UTF8, "application/json"));
         }
 
-        [Then(@"the bidder should be persisted in the database as")]
+        [Then(@"the buyer should be persisted in the database as")]
         public void ThenTheBidderIsPersistedInTheDatabase(Table table)
         {
             var bidderDataExpected = table.CreateInstance<BidderData>();

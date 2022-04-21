@@ -1,7 +1,7 @@
 ﻿Feature: Create or Update Bidders Approval Status
 	As a Platform User
-	I want to create or Update a bidder's Status (i.e Approved, Pending, Denied) record in a bidder status datastore
-	So that that bidder's status can be verified ahead of or at the time of placing bids by checking against the bidder's record stored in the datastore
+	I want to create or Update a buyer's Status (i.e Approved, Pending, Denied) record in a buyer status datastore
+	So that that buyer's status can be verified ahead of or at the time of placing bids by checking against the buyer's record stored in the datastore
 
 Background:
 	Given my request body is
@@ -26,9 +26,9 @@ Background:
 		| x-bid-user-reference  | 1     |
 
 Scenario:Request with valid details
-	When you send a put bidder request to /v1/bidder
+	When you send a put buyer request to /v1/buyer
 	Then response should be 200 OK
-	And the bidder should be persisted in the database as
+	And the buyer should be persisted in the database as
 	| PartitionKey      | Id                    | MarketIdentityCode | TenderId | TenderHouseId | customerId    | BuyerId     | Status   | BuyerRef | Action    |
 	| a_Customer_id-201 | 123-a_Customer_id-201 | 201                | 123      | 20            | a_Customer_id | a_Bidder_id | Approved | 10C      | test html |
 
@@ -47,7 +47,7 @@ Scenario:Request with Invalid details
 			"cta" : "test html"
 		}
 		"""	
-	When you send a put bidder request to /v1/bidder
+	When you send a put buyer request to /v1/buyer
 	Then response should be 400 Bad Request
 
 	
@@ -65,7 +65,7 @@ Scenario:Request with Invalid Status
 			"Action" : "test html"
 		}
 		"""	
-	When you send a put bidder request to /v1/bidder
+	When you send a put buyer request to /v1/buyer
 	Then response should be 400 Bad Request
 	And the response contains only these validation errors
 		| code | value              | path     | description                                                                                                                                                                 |
@@ -85,7 +85,7 @@ Scenario:Request when Status is None
 			"Action" : "test html"
 		}
 		"""	
-	When you send a put bidder request to /v1/bidder
+	When you send a put buyer request to /v1/buyer
 	Then response should be 400 Bad Request
 	And the response contains only these validation errors with error codes
 		| code | value                | path   | description                         |
@@ -105,7 +105,7 @@ Scenario:Request with Pending Status requires a cta
 			"Action" : " "
 		}
 		"""	
-	When you send a put bidder request to /v1/bidder
+	When you send a put buyer request to /v1/buyer
 	Then response should be 400 Bad Request
 	And the response contains only these validation errors
 		| code | value              | path | description                                                          |
@@ -125,7 +125,7 @@ Scenario:Request with Denied Status requires a cta
 			"Action" : " "
 		}
 		"""	
-	When you send a put bidder request to /v1/bidder
+	When you send a put buyer request to /v1/buyer
 	Then response should be 400 Bad Request
 	And the response contains only these validation errors
 		| code | value              | path   | description                                                             |
@@ -137,7 +137,7 @@ Scenario: Empty string request
 	Given my request body is
 		"""
 		"""
-	When you send a put bidder request to /v1/bidder
+	When you send a put buyer request to /v1/buyer
 	Then response should be 400 Bad Request
 
 
@@ -146,7 +146,7 @@ Scenario: Empty json object request
 		"""
 		{}
 		"""
-	When you send a put bidder request to /v1/bidder
+	When you send a put buyer request to /v1/buyer
 	Then response should be 400 Bad Request
 	And the response contains only these validation errors
 		| code | value              | path               | description                               |
@@ -165,7 +165,7 @@ Scenario: Request without required headers
 	And my required headers
 		| Key | Value |
 		
-	When you send a put bidder request to /v1/bidder
+	When you send a put buyer request to /v1/buyer
 	Then response should be 400 Bad Request
 
 
@@ -191,7 +191,7 @@ Given my request body is
 		| x-bid-app-id          | 1     |
 		| x-bid-user-reference  | 1     |
 
-	When you send a put bidder request to /v1/bidder
+	When you send a put buyer request to /v1/buyer
 	Then response should be 400 Bad Request
 	And the response contains only these validation errors with error codes
 		| code | value                              | path               | description                        |
@@ -220,7 +220,7 @@ Given my request body is
 		| x-bid-app-id          | 1     |
 		| x-bid-user-reference  | 1     |
 
-	When you send a put bidder request to /v1/bidder
+	When you send a put buyer request to /v1/buyer
 	Then response should be 400 Bad Request
 	And the response contains only these validation errors with error codes
 		| code | value                              | path               | description                                              |
