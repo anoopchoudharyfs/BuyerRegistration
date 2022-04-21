@@ -6,7 +6,7 @@ Bidder registrations job is to provide an API which enables the user to update a
 
 The MVP provides one endpoint, allowing you to update a bidders status on an auction which will be stored in a CosmosDB collection.
 
-![Artifacts](./docs/BidderRegWidgetAct.PNG)
+![Artifacts](./docs/Layers.png)
 
 ##Developer Notes
 
@@ -37,12 +37,12 @@ An example document from the container can be seen below:
 {
     "id": "123-4-201",
     "partitionKey": "4-201",
-    "marketplaceCode": 201,
-    "auctionId": 123,
-    "auctionHouseId": 1001,
+    "marketIdentityCode": 201,
+    "tenderId": 123,
+    "tenderHouseId": 1001,
     "customerId": "4",
-    "bidderId": "5",
-    "bidderRef": "10C",
+    "buyerId": "5",
+    "buyerRef": "10C",
     "status": "Pending",
     "cta": "The Coffe was hot",
     "_rid": "VLE9AIJtmQYCAAAAAAAAAA==",
@@ -81,14 +81,14 @@ now you can run api on your local iis and test complete flow.
 An sample json payload for test api can be seen below:
 ```json
 {
-    "MarketplaceCode": 201,
-    "AuctionId": 123,
-    "AuctionHouseId": 1001,
-    "customerId": "4",
-    "bidderId": "5",
-    "status": "Pending",
-    "bidderRef": "10C",
-    "cta": "The Coffe was hot"
+    "MarketIdentityCode": 201,
+    "TenderId": 123,
+    "TenderHouseId": 1001,
+    "CustomerId": "4",
+    "BuyerId": "5",
+    "Status": "Pending",
+    "BuyerRef": "10C",
+    "Action": "The Coffe was hot"
 }
 ```
 
