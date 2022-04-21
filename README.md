@@ -59,7 +59,7 @@ https://docs.microsoft.com/en-us/azure/cosmos-db/restore-account-continuous-back
 
 **External Dependencies**
 
-The bidder registration service is dependent on the CosmosDB in order to function.
+The buyer registration service is dependent on the CosmosDB in order to function.
 
 
 ##Platform Integration Notes
