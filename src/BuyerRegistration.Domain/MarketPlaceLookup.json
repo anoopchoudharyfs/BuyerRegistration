@@ -1,0 +1,29 @@
+[
+  {
+    "Id": 10,
+    "Name": "GAP",
+    "Marketplaces": [
+      {
+        "Id": 101,
+        "Name": "thesaleroom.com",
+        "PlatformId": 10
+      },
+      {
+        "Id": 102,
+        "Name": "xxxxx.com",
+        "PlatformId": 10
+      }
+    ]
+  },
+  {
+    "Id": 20,
+    "Name": "Proxibid",
+    "Marketplaces": [
+      {
+        "Id": 201,
+        "Name": "proxibid.com",
+        "PlatformId": 20
+      }
+    ]
+  }
+]
