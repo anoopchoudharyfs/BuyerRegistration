@@ -4,7 +4,7 @@ Buyer registrations job is to provide an API which enables the user to update a 
 
 ##MVP
 
-The MVP provides one endpoint, allowing you to update a bidders status on an auction which will be stored in a CosmosDB collection.
+The MVP provides one endpoint, allowing you to update a buyers status on an auction which will be stored in a CosmosDB collection.
 
 ![Artifacts](./docs/Layers.png)
 
@@ -22,15 +22,15 @@ The solution has a simple structure with only three projects contained inside it
 
 **Cosmos Database**
 
-The buyerRegistration database uses a CosmosDB with eventual consistency to store bidder status data.
+The buyerRegistration database uses a CosmosDB with eventual consistency to store buyer status data.
 
 The partition key is:
 
-bidderRequest.CustomerId-bidderRequest.MarketplaceCode.
+buyerRequest.CustomerId-buyerRequest.MarketIdentityCode.
 
 The ID is:
 
-bidderRequest.AuctionId-bidderRequest.CustomerId-bidderRequest.MarketplaceCode.
+buyerRequest.AuctionId-buyerRequest.CustomerId-buyerRequest.MarketIdentityCode.
 
 An example document from the container can be seen below:
 ```json
